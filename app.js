@@ -5,3 +5,10 @@ async function sendMessage(room, anon_name, message) {
         body: JSON.stringify({room, anon_name, message})
     });
 }
+
+
+async function loadMessages(room) {
+    const res = await fetch(`https://your-server.com/api/messages/${room}`);
+    const data = await res.json();
+    console.log(data); // відобразити на сторінці
+}
