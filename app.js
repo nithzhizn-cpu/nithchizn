@@ -1,9 +1,21 @@
 function sendMessage() {
-  const msg = document.getElementById("message").value;
-  if (window.Telegram.WebApp) {
-    Telegram.WebApp.sendData(msg);
-    alert("Повідомлення відправлено: " + msg);
-  } else {
-    alert("Цей WebApp має працювати лише всередині Telegram.");
-  }
+    const input = document.getElementById('message');
+    const chat = document.getElementById('chat');
+    const text = input.value.trim();
+    if (text === '') {
+        alert('Введіть повідомлення!');
+        return;
+    }
+
+    // Додаємо повідомлення в чат
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message';
+    messageDiv.textContent = text;
+    chat.appendChild(messageDiv);
+
+    // Прокручуємо вниз
+    chat.scrollTop = chat.scrollHeight;
+
+    // Очищаємо поле вводу
+    input.value = '';
 }
