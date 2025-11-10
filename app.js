@@ -1,15 +1,10 @@
-const chat = document.getElementById('chat');
-const msgInput = document.getElementById('msg');
-const sendBtn = document.getElementById('send');
+document.getElementById("sendBtn").addEventListener("click", async () => {
+    const text = document.getElementById("msg").value;
+    const chatId = Telegram.WebApp.initDataUnsafe.user.id; // отримуємо ID користувача Telegram
 
-sendBtn.onclick = () => {
-    const text = msgInput.value.trim();
-    if (text) {
-        // Надсилаємо повідомлення боту
-        Telegram.WebApp.sendData(text);
-        msgInput.value = '';
-    }
-};
-
-// Отримуємо повідомлення від бота через Telegram
-// (Тут можна підключити long polling або websocket на сервері)
+    await fetch("https://abcd1234.ngrok.io/send_message", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chat_id: chatId, text })
+    });
+});
