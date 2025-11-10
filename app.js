@@ -1,23 +1,15 @@
-function sendMessage() {
-    const input = document.getElementById('message');
-    const chat = document.getElementById('chat');
-    const text = input.value.trim();
-    if (text === '') {
-        alert('Введіть повідомлення!');
-        return;
+const chat = document.getElementById('chat');
+const msgInput = document.getElementById('msg');
+const sendBtn = document.getElementById('send');
+
+sendBtn.onclick = () => {
+    const text = msgInput.value.trim();
+    if (text) {
+        // Надсилаємо повідомлення боту
+        Telegram.WebApp.sendData(text);
+        msgInput.value = '';
     }
+};
 
-    // Створюємо div для повідомлення
-    const messageDiv = document.createElement('div');
-    messageDiv.className = 'message';
-    messageDiv.textContent = text;
-
-    // Додаємо повідомлення у вікно чату
-    chat.appendChild(messageDiv);
-
-    // Прокручування чату вниз
-    chat.scrollTop = chat.scrollHeight;
-
-    // Очищаємо поле вводу
-    input.value = '';
-}
+// Отримуємо повідомлення від бота через Telegram
+// (Тут можна підключити long polling або websocket на сервері)
