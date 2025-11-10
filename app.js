@@ -7,13 +7,15 @@ function sendMessage() {
         return;
     }
 
-    // Додаємо повідомлення в чат
+    // Створюємо div для повідомлення
     const messageDiv = document.createElement('div');
     messageDiv.className = 'message';
     messageDiv.textContent = text;
+
+    // Додаємо повідомлення у вікно чату
     chat.appendChild(messageDiv);
 
-    // Прокручуємо вниз
+    // Прокручування чату вниз
     chat.scrollTop = chat.scrollHeight;
 
     // Очищаємо поле вводу
