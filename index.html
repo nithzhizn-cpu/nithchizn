@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Секретний чат</title>
+<style>
+  body { font-family: Arial; background: #1e1e1e; color: #fff; }
+  #chat { height: 400px; overflow-y: scroll; border: 1px solid #444; padding: 10px; margin-bottom: 10px; }
+  input { width: 80%; padding: 8px; }
+  button { padding: 8px; }
+</style>
+</head>
+<body>
+<div id="chat"></div>
+<input id="message" placeholder="Написати повідомлення...">
+<button onclick="sendMessage()">Відправити</button>
+<script src="app.js"></script>
+</body>
+</html>
